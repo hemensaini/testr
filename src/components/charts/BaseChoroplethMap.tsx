@@ -67,8 +67,6 @@ const BaseChoroplethMap: React.FC<BaseChoroplethProps> = ({
     );
   }, [regionData, normalizeRegionName]);
 
-  const themeKey = colorThemeColors.join(',');
-
   const getProjection = () => {
     if (typeof projection === 'function') return projection(width, height, geoData);
     switch (projection) {
@@ -224,7 +222,7 @@ const BaseChoroplethMap: React.FC<BaseChoroplethProps> = ({
     devMode,
     searchRegion,
     colorScaleIndex,
-    themeKey
+    JSON.stringify(colorThemeColors) // 🔧 FIXED LINE: tracks theme change
   ]);
 
   return (
